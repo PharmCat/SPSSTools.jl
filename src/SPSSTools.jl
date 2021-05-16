@@ -4,6 +4,31 @@ using Tables
 
 export value_labels
 
+"""
+    value_labels(data, value::Symbol, label::Symbol; varname = "varname", out = nothing, charq = :auto)
+
+VALUE LABELS command with value-label pairs from data table.
+
+* `charq` - character quoting, `:auto` or AbstractVector{Bool}
+
+Example:
+
+ `value_labels(data, :value, :label; varname = "name",  charq = (false, true))`
+
+Pattern:
+
+VALUE LABELS
+
+varname
+
+val1 'label1'
+
+val2 'label2'
+
+val3 'label3'.
+
+EXECUTE.
+"""
 function value_labels(data, value::Symbol, label::Symbol; varname = "varname", out = nothing, charq = :auto)
     cols = Tables.columns(data)
     res  = Tuple(Tables.getcolumn(cols, y) for y in (value, label))
