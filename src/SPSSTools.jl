@@ -9,7 +9,7 @@ export value_labels
 
 VALUE LABELS command with value-label pairs from data table.
 
-* `charq` - character quoting, `:auto` or AbstractVector{Bool}
+* `charq` - character quoting, `:auto` or Tuple{Bool, Bool}
 
 Example:
 
@@ -18,15 +18,10 @@ Example:
 Pattern:
 
 VALUE LABELS
-
 varname
-
 val1 'label1'
-
 val2 'label2'
-
 val3 'label3'.
-
 EXECUTE.
 """
 function value_labels(data, value::Symbol, label::Symbol; varname = "varname", out = nothing, charq = :auto)
